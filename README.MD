@@ -14,7 +14,7 @@ It's mostly useless but I wanted to code this weekend.
 
 ## Installation
 ### Get the app!
-- Currently there is only the src/ folder with the basic script. You would need to setup or build the project in-order-to use it.
+- There is a new release v0.1.0 in [releases](https://github.com/Heat-GradientAscent/inventory-salvage/releases)
 
 ## Contribute
 ### Requirements
