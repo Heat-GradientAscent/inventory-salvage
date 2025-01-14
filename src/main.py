@@ -7,6 +7,7 @@ from tkinter.filedialog import askopenfilename
 from tkinter.font import Font
 import threading
 from PIL import Image, ImageTk
+from combos import Combo
 
 # relative path stuffs
 def resource_path(relative_path):
@@ -71,17 +72,24 @@ ttk.Label(root, textvariable = errorMsg, foreground = 'red', wraplength = 80, ju
 successMsg = tk.StringVar()
 ttk.Label(root, textvariable = successMsg, foreground = 'green', wraplength = 80, justify = 'left').grid(column = 1, row = 12, padx = 10, pady = 25)
 
+
+
 # Combobox creation
 n = tk.StringVar()
-tagcombo = ttk.Combobox(root, width = 27, textvariable = n)
-
-
-# Adding combobox drop down list
-opts = [
+tagopts = [
 	'EnderItems',
 	'Inventory',
+    'Pos',
+    'Motion',
+    'Rotation',
+    'XpTotal',
+    'Dimension',
+    'Health',
+    'playerGameType',
+    'foodLevel',
 ]
-tagcombo['values'] = (opts)
+tagopts.sort()
+tagcombo = Combo(root, width = 27, textvariable = n, completevalues = tagopts)
 tagcombo.grid(column = 1, row = 5)
 
 def selectFile(label, labelDisplay):
