@@ -7,6 +7,7 @@ from tkinter.filedialog import askopenfilename
 from tkinter.font import Font
 import threading
 from PIL import Image, ImageTk
+from logger import Logger
 from combos import Combo
 
 # relative path stuffs
@@ -68,11 +69,17 @@ ttk.Label(root, textvariable = newplayerDisplay, font = font).grid(column = 1, r
 errorMsg = tk.StringVar()
 ttk.Label(root, textvariable = errorMsg, foreground = 'red', wraplength = 80, justify = 'left').grid(column = 0, row = 12, padx = 10, pady = 25)
 
+# Logger
 # success msgs
 successMsg = tk.StringVar()
-ttk.Label(root, textvariable = successMsg, foreground = 'green', wraplength = 80, justify = 'left').grid(column = 1, row = 12, padx = 10, pady = 25)
+ttk.Label(root, textvariable = successMsg, foreground = 'green', wraplength = 120, justify = 'left').grid(column = 1, row = 12, padx = 4, pady = 25)
 
+# error msgs
+errorMsg = tk.StringVar()
+ttk.Label(root, textvariable = errorMsg, foreground = 'red', wraplength = 80, justify = 'left').grid(column = 0, row = 12, padx = 4, pady = 25)
 
+logger = Logger(successMsg, errorMsg)
+logger.afterSuccess('Welcome!')
 
 # Combobox creation
 n = tk.StringVar()
@@ -99,17 +106,18 @@ def selectFile(label, labelDisplay):
 	label.set(filename)
 
 def copyOver():
-    currentOpt = opts[current := tagcombo.current()]
     oldie, newbie = oldplayer.get(), newplayer.get()
-    if current < 0: afterError('Selected tag is invalid! :C'); return
     if '.dat' not in oldie: afterError('Old player is invalid! :C'); return
     if '.dat' not in newbie: afterError('New player is invalid! :C'); return
     if oldie == newbie: afterError('Can\'t copy from the same file! :C'); return
     old = nbtlib.load(oldie)
     new = nbtlib.load(newbie)
     new[currentOpt] = old[currentOpt]
+    currentOpt = tagopts[current := tagcombo.current()]
+    if current < 0: logger.afterError('Selected tag is invalid! :C'); return
     try:
         new.save()
+        logger.afterSuccess('Successfully copied data!')
     except:
         afterError('something went wrong!')
     afterSuccess('Successfully copied data!'); return
@@ -123,6 +131,7 @@ def afterSuccess(text):
     errorMsg.set('')
     successMsg.set(text)
     threading.Timer(function = lambda: successMsg.set(''), interval = 3.0).start()
+        logger.afterError('Something went wrong!')
 
 # btns idk
 ttk.Button(root, text = "Select File", command = lambda: selectFile(oldplayer, oldplayerDisplay)).grid(row = 7, column = 4)
