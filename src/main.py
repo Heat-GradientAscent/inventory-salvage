@@ -8,6 +8,8 @@ from PIL import Image, ImageTk
 from worlds import World
 from logger import Logger
 from combos import Combo
+from info import openinfo
+from math import floor, ceil
 
 # relative path stuffs (do not touch please)
 def resource_path(relative_path):
@@ -19,16 +21,22 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 try:
+    # development lol
     import iconpath
-    path = 'src\\assets\\fave.ico'
+    fave_ico_path = 'src\\assets\\fave.ico'
+    info_webp_path = 'src\\assets\\i_icon.webp'
+    info_txt_path = 'src\\assets\\info.txt'
 except:
-    path = 'assets\\fave.ico'
+    # production lol
+    fave_ico_path = 'assets\\fave.ico'
+    info_webp_path = 'assets\\i_icon.webp'
+    info_txt_path = 'assets\\info.txt'
 
 # generating tkinter root
 root = tk.Tk()
 root.title('Inventory Salvage')
 root.resizable(False, False)
-im = Image.open(resource_path(path))
+im = Image.open(resource_path(fave_ico_path))
 photo = ImageTk.PhotoImage(im)
 root.wm_iconphoto(True, photo)
 WINDOW_HEIGHT = 350
@@ -70,6 +78,14 @@ ttk.Label(root, textvariable = errorMsg, foreground = 'red', wraplength = 80, ju
 
 logger = Logger(successMsg, errorMsg)
 logger.afterSuccess('Welcome!')
+
+# info button
+image = Image.open(resource_path(info_webp_path))  # Replace with the path to your image file
+image_resized = image.resize((16, 16))
+photo = ImageTk.PhotoImage(image_resized)
+info = tk.Button(root, image=photo, bd=0)  # 'bd=0' removes the border around the button
+info.grid(column = 3, row = 0, padx = PAD_X, pady = PAD_Y)
+info.config(command = lambda: openinfo(resource_path(info_txt_path), x_cordinate + floor(WINDOW_WIDTH/6), y_cordinate + floor(WINDOW_HEIGHT/6)))
 
 # Combobox creation
 n = tk.StringVar()

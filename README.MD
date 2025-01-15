@@ -36,7 +36,7 @@ It's mostly useless but I wanted to code this weekend.
 
 ### Build
 - Navigate to root dir, then run command (command can be found in build.txt)
-  - `pyinstaller --noconfirm --onefile --windowed --icon "src/assets/fave.ico" --name "inventory-salvage" --clean --paths "src/assets/*.ico" --add-data "src/assets/fave.ico;assets" --exclude-module iconpath "src/main.py"`
+  - `pyinstaller --noconfirm --onefile --windowed --icon "src/assets/fave.ico" --name "inventory-salvage" --clean --paths "src/assets/*.ico" --add-data "src/assets/fave.ico;assets" --add-data "src/assets/i_icon.webp;assets" --add-data "src/assets/info.txt;assets" --exclude-module iconpath "src/main.py"`
 
 ### Run
 - Navigate to `main.py` and run the file normally
