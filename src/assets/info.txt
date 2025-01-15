@@ -1,0 +1,31 @@
+Hello, this is the small tutorial of this app!
+
+
+The use is simple, you just copy the nbt (Named Binary Tag) that contains all the information of your player that you want to copy from one world to another, from one player to another, or a combination of those!
+You can use this app for salvaging inventories, ender chest inventories, as well as other things from backups or other worlds.
+
+
+Steps:
+  1. Go to the top dropdown box and select the tag* you wish to copy the data of
+  2. Click on the first button that says "Select save A"
+  3. Select the 'save' directory that has the player you want
+  4. Find the player you wish to copy FROM
+  5. Repeat steps 2 through 4 to find the player you wish to copy TO
+  6. Once you're happy with the player you wish to modify, click on the "Copy! :D" button
+  7. You have successfully copied data from one player to another!**
+
+* Full list of tags and their meanings
+  - EnderItems: inventory that lies in the ender chest of the player
+  - Inventory: self-explanatory, everything in a player's inventory
+  - Pos: the current coordinates of a player in the world
+  - Motion: the current vectorial velocity of the player in the world
+  - Rotation: the current rotation of the player in the world
+  - XpTotal: the total xp of the player (probably works as score and levels too)
+  - Dimension: the current dimension in which the player is found regardless of Pos, Motion and Rotation
+  - Health: current health of the player
+  - playerGameType: mode in which the player is in (creative, survival, spectator)
+  - foodLevel: like Health, but for a player's hunger
+
+** That is, unless you have an invalid world or player/s.
+Invalid worlds have no player files in either the advancements or stats directories.
+Invalid players probably have missing/corrupted data that is not being found in the world or in the player's properties.
