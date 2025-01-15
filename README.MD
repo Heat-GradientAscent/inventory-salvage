@@ -2,19 +2,17 @@
 # Inventory Salvage
 > Like the project? Leave a star, it helps! ;)
 
-**Release 0.1.0**
+**Release 1.0.0**
 
 ## Description
 This is an app that allows you to salvage information from a lost minecraft account.
 
 Minecraft servers (and personal worlds) store player files using the uuid of the player account. This file contains all of the inventory, ender chest, position, advancements, recipes, etc., and the purpose of this app is to make it easy to copy from an old player file onto a new player file all of the desired data. This is not for duping.
 
-It's mostly useless but I wanted to code this weekend.
-
 
 ## Installation
 ### Get the app!
-- There is a new release v0.1.0 in [releases](https://github.com/Heat-GradientAscent/inventory-salvage/releases)
+- There is a new release v1.0.0 in [releases](https://github.com/Heat-GradientAscent/inventory-salvage/releases/tag/v1.0.0)
 
 ## Contribute
 ### Requirements
